@@ -1,0 +1,17 @@
+networks:
+  default:
+   name: roboshop
+   driver: bridge
+   # external: true # if already creatd outside network connection for this
+services:
+  mongodb:
+    image: joindevops/mongodb:v1
+    container_name: mongodb
+
+  catalogue:
+    image: joindevops/catalogue:v1
+    container_name: catalogue
+    depends_on: mongodb
+    enviornment:
+      - CART_HOST=cart
+      -
